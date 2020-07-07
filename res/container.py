@@ -1,4 +1,8 @@
+import json
+
 class Container():
+   CONFIG_DATA = json.load('config.json')
+
    def __init__(self):
       self.red = (255,0,0)
       self.green = (0,255,0)
@@ -44,5 +48,10 @@ class Container():
       yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow
       ],
 
-      self.dbname = "sense_data"
+      self.dbname = "sense_db",
+      self.table_name = "sense_table"
+
+      
+      self.min = CONFIG_DATA['comfortable_min']
+      self.max = CONFIG_DATA['comfortable_max']
 

@@ -1,13 +1,13 @@
-from sense_hat import SenseHat
+from src.senseTask import SenseTask
+
 import time
-from res.container import Container
+from res.container import Container as c
 
 
-class AnimatedEmoji():
+class AnimatedEmoji(SenseTask):
 	SLEEP_TIME = 3
 	def __init__(self):
-		self.c = Container()
-		self.sense = SenseHat()
+		super().__init__()
 	
 	def execute(self):
 		print (self.container.black)

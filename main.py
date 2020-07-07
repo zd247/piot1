@@ -1,5 +1,4 @@
 from src.animatedEmoji import AnimatedEmoji
-from res.container import Container
 
 class Main:
    @staticmethod
