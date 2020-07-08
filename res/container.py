@@ -49,7 +49,7 @@ class Container():
       yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow
       ],
 
-      self.dbname = "sense_db",
+      self.dbname = "sense.db",
       self.table_name = "sense_table"
 
       

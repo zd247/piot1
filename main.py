@@ -1,4 +1,4 @@
-from src.animatedEmoji import AnimatedEmoji
+from src.task_a.animatedEmoji import AnimatedEmoji
 from res.container import Container as c
 
 class Main:

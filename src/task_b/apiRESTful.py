@@ -11,6 +11,8 @@ class ApiRESTful ():
       data = []
       for row in curs.execute("SELECT * FROM (?)", (c.table_name,)):
          data.append(row)
+
+      conn.close()
       
       return json.dumps(data)
          
