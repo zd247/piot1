@@ -9,7 +9,7 @@ import json
 
 
 class MonitorAndNotify(SenseTask):
-   ACCESS_TOKEN=""
+   ACCESS_TOKEN="o.NH9RJ56RPc2U7SNTORUWTksCk4SBRCY0"
    UPDATE_INTERVAL = 60
    
    def __init__ (self):
