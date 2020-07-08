@@ -1,4 +1,5 @@
 import json
+import sqlite3
 
 class Container():
    CONFIG_DATA = json.load('config.json')
@@ -55,3 +56,12 @@ class Container():
       self.min = CONFIG_DATA['comfortable_min']
       self.max = CONFIG_DATA['comfortable_max']
 
+
+   def createTable(self):
+      conn = sqlite3.connect(self.dbname)
+      curs = conn.cursor() 
+      curs.execute("DROP TABLE IF EXISTS (?)", (self.table_name))
+      curs.execute("CREATE TABLE (?)(id INTEGER PRIMARY KEY AUTOINCREMENT,timestamp DATETIME, temp NUMERIC, humidity NUMERIC)",
+      (self.table_name,))
+      curs.close()
+      conn.close()

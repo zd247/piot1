@@ -1,5 +1,6 @@
 from datetime import datetime
 from res.container import Container as c
+from src.apiRESTful import ApiRESTful as api
 from src.senseTask import SenseTask
 import sqlite3
 import time
@@ -9,6 +10,7 @@ import json
 
 class MonitorAndNotify(SenseTask):
    ACCESS_TOKEN=""
+   UPDATE_INTERVAL = 60
    
    def __init__ (self):
       super().__init__()
@@ -17,16 +19,8 @@ class MonitorAndNotify(SenseTask):
    
 
    # ===============================[task a]===============================
-   def createTable(self):
-      curs = self.conn.cursor() 
-      curs.execute("DROP TABLE IF EXISTS (?)", (c.table_name))
-      curs.execute("CREATE TABLE (?)(id INTEGER PRIMARY KEY AUTOINCREMENT,timestamp DATETIME, temp NUMERIC, humidity NUMERIC)",
-      (c.table_name,))
-
       
-   def getData(self):
-      time = datetime.now().strftime("%H:%M")
-
+   def readDataFromSense(self):
       self.sense.clear()
       temp = self.sense.get_temperature()
       if temp is not None:
@@ -37,16 +31,8 @@ class MonitorAndNotify(SenseTask):
       if  humidity is not None:
          humidity = round (humidity,1)
       
-      return time,temp,humidity
+      return temp,humidity
    
-
-   def saveData(self):
-      time,temp,humidity = self.getData()
-      curs=self.conn.cursor()
-      curs.execute("INSERT INTO (?) values((?),(?),(?))", (c.table_name,time,temp,humidity,))
-      self.conn.commit()
-      if (self.sent is False):
-         self.checkTempHumidity(temp,humidity)
 
    #==================================[task b]===================================
    #TODO: use cronjob to decide wether to send the notification instead using hard-coded variable
@@ -79,8 +65,6 @@ class MonitorAndNotify(SenseTask):
    
    #Override
    def execute(self):
-      self.createTable()
       while True:
-         saveData()
-         time.sleep(60)
-      self.conn.close()
+         api.postData(self.getData())
+         time.sleep(UPDATE_INTERVAL)

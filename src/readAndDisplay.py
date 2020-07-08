@@ -1,12 +1,15 @@
 # Reference: http://yaab-arduino.blogspot.com/2016/08/display-two-digits-numbers-on-raspberry.html
 
 from src.senseTask import SenseTask
+from src.apiRESTful import ApiRESTful as api
 from res.container import Container as c
 import sqlite3
 import time
+import json
 
 
 class ReadAndDisplay(SenseTask):
+   UPDATE_INTERVAL = 60
    OFFSET_LEFT = 1
    OFFSET_TOP = 2
    NUMS =[1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,  # 0
@@ -48,30 +51,32 @@ class ReadAndDisplay(SenseTask):
       units = abs_val % 10
       if (abs_val > 9): self.showDigit(tens, OFFSET_LEFT, OFFSET_TOP, r, g, b)
       self.showDigit(units, OFFSET_LEFT+4, OFFSET_TOP, r, g, b)
+   
+      
+   def displayTemparature(self):
+      data = json.loads(api.getLastData())[0]
+      temp = data['temp']
 
-   def getLastTempData(self):
-      conn = sqlite3.connect(c.dbname)
-      curs=conn.cursor()
-      curs.execute("SELECT temp FROM (?) ORDER BY id DESC LIMIT 1 ", (c.table_name))
-      return curs.fetchone()
+      # set color
+      r,g,b = c.green
+      if (temp > c.max): r,g,b = c.red
+      elif (temp < c.min): r,g,b = c.blue
+      #display
+      self.showNumber(temp, r,g,b)
    
 
    def execute(self):
+      self.sense.clear()
+      self.displayTemparature()
       while True:
          currentCount = self.countCurrentRowNum()
          # update the display if there's a new record
          if currentCount > self.dataCount:
-            self.sense.clear()
-            newTemp = self.getLastTempData()
-            # set color
-            r,g,b = c.green
-            if (newTemp > c.max): r,g,b = c.red
-            elif (newTemp < c.min): r,g,b = c.blue
-            #display
-            self.showNumber(newTemp, r,g,b)
-            self.dataCount = currentCount
+            self.displayTemparature()
+            self.dataCount = currentCount # update global row count
 
+         time.sleep(UPDATE_INTERVAL)
 
-         time.sleep(60)
+      self.sense.clear()
       
    
