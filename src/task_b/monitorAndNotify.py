@@ -1,24 +1,21 @@
 from datetime import datetime
 from res.container import Container as c
 from src.task_b.apiRESTful import ApiRESTful as api
-from src.senseTask import SenseTask
+from sense_hat import SenseHat
 import sqlite3
 import time
 import requests
 import json
 
 
-class MonitorAndNotify(SenseTask):
-   ACCESS_TOKEN="o.NH9RJ56RPc2U7SNTORUWTksCk4SBRCY0"
-   UPDATE_INTERVAL = 60
-   
+class MonitorAndNotify():   
    def __init__ (self):
-      super().__init__()
-      self.conn = sqlite3.connect(c.dbname)
+      self.sense = SenseHat()
       self.sent = False
+      self.api = api()
    
 
-   # ===============================[task a]===============================
+   # ===========[1]=============
       
    def readDataFromSense(self):
       self.sense.clear()
@@ -34,7 +31,7 @@ class MonitorAndNotify(SenseTask):
       return temp,humidity
    
 
-   #==================================[task b]===================================
+   #==============[2]==========
    #TODO: use cronjob to decide wether to send the notification instead using hard-coded variable
 
    def checkTempHumidity(self, temp, humidity):
@@ -49,22 +46,25 @@ class MonitorAndNotify(SenseTask):
    
    
    def pushNotification(self, title, body):
-      data_send = {"type": "note", "title": title, "body": body}
+      # data_send = {"type": "note", "title": title, "body": body}
 
-      res = requests.post('https://api.pushbullet.com/v2/pushes', 
-                        data=json.dumps(data_send),
-                        headers={'Authorization': 'Bearer ' + ACCESS_TOKEN, 
-                        'Content-Type': 'application/json'})
+      # res = requests.post('https://api.pushbullet.com/v2/pushes', 
+      #                   data=json.dumps(data_send),
+      #                   headers={'Authorization': 'Bearer ' + ACCESS_TOKEN, 
+      #                   'Content-Type': 'application/json'})
 
-      if res.status_code != 200:
-         raise Exception('Something wrong')
-      else:
-         print('complete sending')
-         self.sent = True
+      # if res.status_code != 200:
+      #    raise Exception('Something wrong')
+      # else:
+      #    print('complete sending')
+      #    self.sent = True
+      print (title, body)
 
    
    #Override
    def execute(self):
       while True:
-         api.postData(self.getData())
-         time.sleep(UPDATE_INTERVAL)
+         temp, humidity = self.readDataFromSense()
+         self.api.postData(temp, humidity)
+         self.checkTempHumidity(temp, humidity)
+         time.sleep(c.update_interval)

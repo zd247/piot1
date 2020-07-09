@@ -9,7 +9,7 @@ class ApiRESTful ():
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
       data = []
-      for row in curs.execute("SELECT * FROM (?)", (c.table_name,)):
+      for row in curs.execute("SELECT * FROM sense_table"):
          data.append(row)
 
       conn.close()
@@ -21,32 +21,32 @@ class ApiRESTful ():
    def getLastData(self):
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      curs.execute("SELECT * FROM (?) ORDER BY id DESC LIMIT 1 ", (c.table_name))
+      curs.execute("SELECT * FROM sense_table DESC LIMIT 1 ")
       data = curs.fetchone()
 
-      # ret = {}
-      # for key in curs.description:
-      #    ret.update({key[0]: value for value in data})
+      ret = {}
+      for key in curs.description:
+         ret.update({key[0]: value for value in data})
          
       return json.dumps(data)
       
 
    def postData(self, temp, humidity):
-      time = datetime.now().strftime("%H:%M")
+      time = datetime.now()
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      curs.execute("INSERT INTO (?) values((?),(?),(?))", (c.table_name,time,temp,humidity,))
+      curs.execute("INSERT INTO sense_table values((?),(?),(?))", (time,temp,humidity,))
       conn.commit()
       conn.close()
 
 
    def updateLastData(self, temp, humidity):
-      time = datetime.now().strftime("%H:%M")
+      time = datetime.now()
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
       targetId = curs.rowcount()
-      curs.execute ("UPDATE (?) SET timestamp = (?) temp = (?) humidity = (?) WHERE id = (?)", 
-      (c.table_name, time, temp, humidity, targetId))
+      curs.execute ("UPDATE sense_table SET timestamp = (?) temp = (?) humidity = (?) WHERE id = (?)", 
+      (time, temp, humidity, targetId))
       conn.commit()
       curs.close()
       conn.close()

@@ -1,18 +1,17 @@
-from src.senseTask import SenseTask
-
 import time
 from res.container import Container as c
+from sense_hat import SenseHat
 
-
-class AnimatedEmoji(SenseTask):
-	SLEEP_TIME = 3
+class AnimatedEmoji():
+	
 	def __init__(self):
-		super().__init__()
+		self.sense = SenseHat()
 	
 	def execute(self):
-		print (self.container.black)
 		emojis = [c.emoji1, c.emoji2, c.emoji3]
-		for e in emojis:
-			self.sense.set_pixels(e)
-			time.sleep(SLEEP_TIME)
+		while True:
+			self.sense.clear()
+			for e in emojis:
+				self.sense.set_pixels(e)
+				time.sleep(c.sleep_time)
 		
