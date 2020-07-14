@@ -18,7 +18,7 @@ class ReadAndDisplay():
    def countCurrentRowNum(self):
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      count = curs.rowcount()
+      count = len(curs.fetchall())
       conn.close()
       
       return count
@@ -41,13 +41,14 @@ class ReadAndDisplay():
    
       
    def displayTemparature(self):
-      data = json.loads(self.api.getLastData())[0]
-      temp = data['temp']
-
+      data = json.loads(self.api.getLastData())
+      temp = int(round(data[2]))
+      
       # set color
       r,g,b = c.green
       if (temp > c.max): r,g,b = c.red
       elif (temp < c.min): r,g,b = c.blue
+
       #display
       self.showNumber(temp, r,g,b)
    

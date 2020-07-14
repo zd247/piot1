@@ -10,10 +10,4 @@ class CreateReport():
 
    def readDailyData(self):
       temp, humidity = self.mntf.readDataFromSense()
-      if temp < c.min or temp > c.max:
-         
-
-
-   def writeReport(self):
-      return 1
    

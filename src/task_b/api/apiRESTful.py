@@ -21,13 +21,7 @@ class ApiRESTful ():
    def getLastData(self):
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      curs.execute("SELECT * FROM sense_table DESC LIMIT 1 ")
-      data = curs.fetchone()
-
-      ret = {}
-      for key in curs.description:
-         ret.update({key[0]: value for value in data})
-         
+      data = curs.execute("SELECT * FROM sense_table ORDER BY id DESC LIMIT 1").fetchone()
       return json.dumps(data)
       
 
@@ -35,7 +29,7 @@ class ApiRESTful ():
       time = datetime.now()
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      curs.execute("INSERT INTO sense_table values((?),(?),(?))", (time,temp,humidity,))
+      curs.execute("INSERT INTO sense_table(timestamp, temp, humidity) VALUES ((?),(?),(?))", (time,temp,humidity,))
       conn.commit()
       conn.close()
 
@@ -44,9 +38,9 @@ class ApiRESTful ():
       time = datetime.now()
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
-      targetId = curs.rowcount()
-      curs.execute ("UPDATE sense_table SET timestamp = (?) temp = (?) humidity = (?) WHERE id = (?)", 
-      (time, temp, humidity, targetId))
+      data = json.loads(self.getLastData())
+      targetId = data[0]
+      curs.execute("UPDATE sense_table SET timestamp = (?), temp = (?), humidity = (?) WHERE id = (?)", (time,temp,humidity,targetId))
       conn.commit()
       curs.close()
       conn.close()
