@@ -1,11 +1,12 @@
-from datetime import datetime
 from res.container import Container as c
+from res.helper import Helper as h
 from src.task_b.api.apiRESTful import ApiRESTful as api
 from sense_hat import SenseHat
 import sqlite3
 import time
 import requests
 import json
+
 
 # Auto
 class MonitorAndNotify():   
@@ -19,9 +20,18 @@ class MonitorAndNotify():
       
    def readDataFromSense(self):
       self.sense.clear()
-      temp = self.sense.get_temperature()
+      t1 = self.sense.get_temperature_from_humidity()
+      t2 = self.sense.get_temperature_from_pressure()
+      t_cpu = h.get_cpu_temp()
+
+      # Calculates the real temperature compesating CPU heating.
+      t = (t1 + t2) / 2
+      temp = t - ((t_cpu - t)/ 1.5)
+      # temp = h.get_smooth(temp)
       if temp is not None:
          temp = round(temp,1)
+
+
 
       self.sense.clear()
       humidity = self.sense.get_humidity()

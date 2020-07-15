@@ -27,7 +27,7 @@ class Main:
       #### task b
       # MonitorAndNotify().execute()
       # ReadAndDisplay().execute()
-      # CreateReport().execute()
+      CreateReport().execute()
       # ApiTest().execute()
 
 

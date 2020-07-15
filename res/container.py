@@ -3,6 +3,7 @@ import sqlite3
 
 class Container():
    CONFIG_DATA = json.load(open('./res/config.json'))
+   config_min_max_data = json.load(open('./res/config_min_max.json'))
 
    red = (255,0,0)
    green = (0,255,0)
@@ -74,4 +75,6 @@ class Container():
          1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,  # 7
          1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,  # 8
          1,1,1,1,0,1,1,1,1,0,0,1,0,0,1]  # 9
+
+      
 

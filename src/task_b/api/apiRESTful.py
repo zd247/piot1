@@ -26,7 +26,7 @@ class ApiRESTful ():
       
 
    def postData(self, temp, humidity):
-      time = datetime.now()
+      time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
       curs.execute("INSERT INTO sense_table(timestamp, temp, humidity) VALUES ((?),(?),(?))", (time,temp,humidity,))
