@@ -15,9 +15,9 @@ class Main:
          AnimatedEmoji().execute()
       elif (task is 'b'):
          task_b = input ('Please enter a number to run sub task b (3,4,5): ')
-         if (task_b is 3):
+         if (task_b == '3'):
             ReadAndDisplay().execute()
-         elif (task_b is 4):
+         elif (task_b == '4'):
             CreateReport().execute()
          else:
             print ("Wrong input format, please run the program again and input correctly")
@@ -25,9 +25,9 @@ class Main:
          Bluetooth().execute()
       elif (task is 'd'):
          task_d = input ('Please enter a number to run sub task b (1,2): ')
-         if (task_d is 1):
+         if (task_d is '1'):
             ElectronicDie().execute()
-         elif (task_d is 2):
+         elif (task_d is '2'):
             Game().execute()
          else:
             print ("Wrong input format, please run the program again and input correctly")

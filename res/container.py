@@ -60,6 +60,10 @@ class Container():
 
    day_in_sec = 86400
 
+   csv_file_name = 'report.csv'
+
+   degree_sign = u"\N{DEGREE SIGN}"
+
    offset_left = 1
    offset_top = 2
    nums =[1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,  # 0

@@ -1,13 +1,6 @@
 DEBUG:root:getAllData passed !
 DEBUG:root:getLastData passed !
+DEBUG:root:getLastData passed !
 DEBUG:root:postData passed !
 DEBUG:root:updateLastData passed !
 DEBUG:root:Number of test passes 4/4
-DEBUG:PIL.PngImagePlugin:STREAM 'IHDR' 16 13
-DEBUG:PIL.PngImagePlugin:STREAM 'pHYs' 41 9
-DEBUG:PIL.PngImagePlugin:STREAM 'tIME' 62 7
-DEBUG:PIL.PngImagePlugin:'tIME' 62 7 (unknown)
-DEBUG:PIL.PngImagePlugin:STREAM 'tEXt' 81 25
-DEBUG:PIL.PngImagePlugin:STREAM 'IDAT' 118 774
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.pushbullet.com:443
-DEBUG:urllib3.connectionpool:https://api.pushbullet.com:443 "GET /v2/pushes HTTP/1.1" 200 None

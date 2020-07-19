@@ -19,7 +19,7 @@ class Auto:
       conn.close()
 
       ApiTest().execute()
-      MonitorAndNotify().execute()
+      # MonitorAndNotify().execute()
      
 
 
