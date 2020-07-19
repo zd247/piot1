@@ -2,29 +2,14 @@ from src.task_a.animatedEmoji import AnimatedEmoji
 from src.task_b.monitorAndNotify import MonitorAndNotify
 from src.task_b.readAndDisplay import ReadAndDisplay
 from src.task_b.createReport import CreateReport
-from src.task_b.api.apiTest import ApiTest
 from src.task_c.bluetooth import Bluetooth
 from src.task_d.electronicDie import ElectronicDie
 from src.task_d.game import Game
 from res.container import Container as c
-import sqlite3
 
 class Main:
    @staticmethod
    def main():
-      conn = sqlite3.connect(c.dbname)
-      curs = conn.cursor() 
-      # curs.execute("DROP TABLE IF EXISTS sense_table")
-      curs.execute(
-         "CREATE TABLE IF NOT EXISTS sense_table ("
-         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-         "timestamp DATETIME,"
-         "temp NUMERIC," 
-         "humidity NUMERIC)")
-      curs.close()
-      conn.close()
-
-
       task = input("Please enter a task to run (a,b,d): ")
       if (task is 'a'):
          AnimatedEmoji().execute()
@@ -34,8 +19,6 @@ class Main:
             ReadAndDisplay().execute()
          elif (task_b is 4):
             CreateReport().execute()
-         elif (task_b is 5):
-            ApiTest().execute()
          else:
             print ("Wrong input format, please run the program again and input correctly")
       elif (task is 'c'):
@@ -50,10 +33,5 @@ class Main:
             print ("Wrong input format, please run the program again and input correctly")
       else:
          print ("Wrong input format, please run the program again and input correctly")
-         
-      
-
-      
-
 
 Main.main()

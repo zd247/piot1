@@ -35,7 +35,7 @@ class ApiRESTful ():
 
 
    def updateLastData(self, temp, humidity):
-      time = datetime.now()
+      time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
       conn = sqlite3.connect(c.dbname)
       curs=conn.cursor()
       data = json.loads(self.getLastData())

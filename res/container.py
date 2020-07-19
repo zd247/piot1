@@ -57,7 +57,8 @@ class Container():
    
    min = CONFIG_DATA['comfortable_min']
    max = CONFIG_DATA['comfortable_max']
-   
+
+   day_in_sec = 86400
 
    offset_left = 1
    offset_top = 2
@@ -71,6 +72,7 @@ class Container():
          1,1,1,0,0,1,0,1,0,1,0,0,1,0,0,  # 7
          1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,  # 8
          1,1,1,1,0,1,1,1,1,0,0,1,0,0,1]  # 9
+
 
       
 

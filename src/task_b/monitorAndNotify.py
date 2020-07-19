@@ -4,6 +4,7 @@ from src.task_b.api.apiRESTful import ApiRESTful as api
 from sense_hat import SenseHat
 import sqlite3
 import time
+import calendar
 import requests
 import json
 
@@ -14,6 +15,7 @@ class MonitorAndNotify():
       self.sense = SenseHat()
       self.sent = False
       self.api = api()
+      self.h = h()
    
 
    # ===========[1]=============
@@ -22,12 +24,12 @@ class MonitorAndNotify():
       self.sense.clear()
       t1 = self.sense.get_temperature_from_humidity()
       t2 = self.sense.get_temperature_from_pressure()
-      t_cpu = h.get_cpu_temp()
+      t_cpu = self.h.get_cpu_temp()
 
       # Calculates the real temperature compesating CPU heating.
       t = (t1 + t2) / 2
       temp = t - ((t_cpu - t)/ 1.5)
-      # temp = h.get_smooth(temp)
+      # temp = h.get_smooth(temp) // weird syntax, doesnt work
       if temp is not None:
          temp = round(temp,1)
 
@@ -54,9 +56,9 @@ class MonitorAndNotify():
          self.pushNotification("Humidity alert", body)
          
    
-   #TODO: use cronjob to decide wether to send the notification instead using hard-coded variable
+   # use cronjob to decide wether to send the notification instead using hard-coded variable
    def pushNotification(self, title, body):
-      if (self.sent is False):
+      if (self.h.verify_send_time() is True):
          data_send = {"type": "note", "title": title, "body": body}
 
          res = requests.post('https://api.pushbullet.com/v2/pushes', 
@@ -69,6 +71,7 @@ class MonitorAndNotify():
          else:
             print('complete sending')
             self.sent = True
+
 
    
    #Override

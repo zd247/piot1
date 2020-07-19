@@ -15,7 +15,7 @@ class CreateReport():
       temp, humidity = self.mntf.readDataFromSense()
       self.api.postData(temp, humidity) # save to database
       date = datetime.now().strftime("%d/%m/%Y")
-      with open ('report.csv', 'w', newline = '') as file:
+      with open ('report.csv', newline = '') as file:
          writer = csv.writer(file)
          writer.writerow([date, temp])
 
