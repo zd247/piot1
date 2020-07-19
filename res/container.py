@@ -5,48 +5,44 @@ class Container():
    CONFIG_DATA = json.load(open('./res/config.json'))
    config_min_max_data = json.load(open('./res/config_min_max.json'))
 
-   red = (255,0,0)
-   green = (0,255,0)
-   blue = (0,0,255)
-   white = (150,150,150)
-   yellow = (255,255,0)
-   pink = (255,102,178)
-   black = (0,0,0)
-   brown = (51,0,0)
-   purple = (102,0,102)
+   r = (255,0,0)
+   g = (0,255,0)
+   b = (0,0,255)
+   w = (150,150,150)
+   y = (255,255,0)
 
    # emojis
    emoji1  = [
-   red,red,red,red,red,red,red,red,
-   red,red,red,red,red,red,red,red,
-   white,white,white,red,red,white,white,white,
-   white,white,black,red,red,white,white,black,
-   white,white,white,red,red,white,white,white,
-   red,red,red,red,red,red,red,red,
-   red,red,red,red,red,red,red,red,
-   red,red,red,red,red,red,red,red
+   w,w,w,w,w,w,w,w,
+   w,w,r,w,w,g,w,w,
+   w,w,r,w,w,g,w,w,
+   w,w,r,w,w,g,w,w,
+   w,w,w,w,w,w,w,w,
+   w,w,b,w,w,b,w,w,
+   w,w,w,b,b,w,w,w,
+   w,w,w,w,w,w,w,w,
    ]
 
    emoji2  = [
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   white,white,white,red,red,white,white,white,
-   white,white,blue,red,red,white,white,blue,
-   white,white,white,red,red,white,white,white,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
+   w,w,w,w,w,w,w,w,
+   w,y,y,w,w,g,g,w,
+   w,y,y,w,w,g,g,w,
+   w,w,w,w,w,w,w,w,
+   w,w,w,b,b,w,w,w,
+   w,w,w,w,w,w,w,w,
+   w,w,w,r,r,w,w,w,
+   w,w,r,r,r,r,w,w,
    ]
 
    emoji3 =[
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow,
-   yellow,blue,blue,yellow,yellow,blue,blue,yellow,
-   yellow,blue,blue,yellow,yellow,blue,blue,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow, yellow,yellow,
-   yellow,blue,blue,yellow,yellow,blue,blue,yellow,
-   yellow,yellow,yellow,blue,blue,yellow,yellow,yellow,
-   yellow,yellow,yellow,yellow,yellow,yellow,yellow,yellow
+   b,b,b,g,g,b,b,b,
+   b,b,r,r,y,y,b,b,
+   b,r,r,r,y,y,y,b,
+   b,r,r,r,y,y,y,b,
+   b,r,r,r,y,y,y,b,
+   b,b,r,r,y,y,b,b,
+   b,b,r,r,y,y,b,b,
+   b,b,b,r,y,b,b,b,
    ]
 
    dbname = "sense.db"

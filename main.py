@@ -3,6 +3,9 @@ from src.task_b.monitorAndNotify import MonitorAndNotify
 from src.task_b.readAndDisplay import ReadAndDisplay
 from src.task_b.createReport import CreateReport
 from src.task_b.api.apiTest import ApiTest
+from src.task_c.bluetooth import Bluetooth
+from src.task_d.electronicDie import ElectronicDie
+from src.task_d.game import Game
 from res.container import Container as c
 import sqlite3
 
@@ -21,14 +24,36 @@ class Main:
       curs.close()
       conn.close()
 
-      #### task a
-      # AnimatedEmoji().execute()
 
-      #### task b
-      # MonitorAndNotify().execute()
-      # ReadAndDisplay().execute()
-      CreateReport().execute()
-      # ApiTest().execute()
+      task = input("Please enter a task to run (a,b,d): ")
+      if (task is 'a'):
+         AnimatedEmoji().execute()
+      elif (task is 'b'):
+         task_b = input ('Please enter a number to run sub task b (3,4,5): ')
+         if (task_b is 3):
+            ReadAndDisplay().execute()
+         elif (task_b is 4):
+            CreateReport().execute()
+         elif (task_b is 5):
+            ApiTest().execute()
+         else:
+            print ("Wrong input format, please run the program again and input correctly")
+      elif (task is 'c'):
+         Bluetooth().execute()
+      elif (task is 'd'):
+         task_d = input ('Please enter a number to run sub task b (1,2): ')
+         if (task_d is 1):
+            ElectronicDie().execute()
+         elif (task_d is 2):
+            Game().execute()
+         else:
+            print ("Wrong input format, please run the program again and input correctly")
+      else:
+         print ("Wrong input format, please run the program again and input correctly")
+         
+      
+
+      
 
 
 Main.main()

@@ -17,7 +17,6 @@ class CreateReport():
       date = datetime.now().strftime("%d/%m/%Y")
       with open ('report.csv', 'w', newline = '') as file:
          writer = csv.writer(file)
-         writer.writerow(['Date', 'Status'])
          writer.writerow([date, temp])
 
 
