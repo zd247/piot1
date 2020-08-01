@@ -45,8 +45,73 @@ class Container():
    b,b,b,r,y,b,b,b,
    ]
 
+
    dbname = "sense.db"
    table_name = "sense_table"
+   
+      one = [
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,r,r,b,b,b,
+            b,b,b,r,r,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,]
+      two = [
+            b,b,b,b,b,b,b,b,
+            b,g,g,b,b,b,b,b,
+            b,g,g,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,g,g,b,b,
+            b,b,b,b,g,g,b,b,
+            b,b,b,b,b,b,b,b,
+            ]
+
+      three = [
+            g,g,b,b,b,b,b,b,
+            g,g,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,g,g,b,b,b,
+            b,b,b,g,g,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,g,g,
+            b,b,b,b,b,b,g,g,
+            ]
+
+      four = [
+            b,b,b,b,b,b,b,b,
+            b,g,g,b,b,g,g,b,
+            b,g,g,b,b,g,g,b,
+            b,b,b,b,b,b,b,b,
+            b,b,b,b,b,b,b,b,
+            b,g,g,b,b,g,g,b,
+            b,g,g,b,b,g,g,b,
+            b,b,b,b,b,b,b,b,
+            ]
+
+      five = [
+            g,g,b,b,b,b,g,g,
+            g,g,b,b,b,b,g,g,
+            b,b,b,b,b,b,b,b,
+            b,b,b,g,g,b,b,b,
+            b,b,b,g,g,b,b,b,
+            b,b,b,b,b,b,b,b,
+            g,g,b,b,b,b,g,g,
+            g,g,b,b,b,b,g,g,
+            ]
+
+      six = [
+            r,r,b,b,b,b,r,r,
+            r,r,b,b,b,b,r,r,
+            b,b,b,b,b,b,b,b,
+            r,r,b,b,b,b,r,r,
+            r,r,b,b,b,b,r,r,
+            b,b,b,b,b,b,b,b,
+            r,r,b,b,b,b,r,r,
+            r,r,b,b,b,b,r,r,
+            ]
 
    sleep_time = 3
    update_interval = 60
@@ -57,6 +122,11 @@ class Container():
    
    min = CONFIG_DATA['comfortable_min']
    max = CONFIG_DATA['comfortable_max']
+   
+   min_temp = config_min_max_data["min_temperature"]
+   max_temp = config_min_max_data["max_temperature"]
+   min_humidity = config_min_max_data["min_humidity"]
+   max_humidity = config_min_max_data["max_humidity"]
 
    day_in_sec = 86400
 
