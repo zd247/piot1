@@ -48,12 +48,9 @@ class MonitorAndNotify():
 
    def checkTempHumidityAndPush(self, temp, humidity):
       if temp < c.min or temp > c.max:
-         body = "Comfortable temparature is out of range - sending from Raspberry Pi"
-         self.pushNotification("Temparature alert", body)
-      
+         self.pushNotification("Temparature alert", c.bad_temp_msg)
       elif humidity < c.min or humidity > c.max:
-         body = "Comfortable humidity is out of range - sending from Raspberry Pi"
-         self.pushNotification("Humidity alert", body)
+         self.pushNotification("Humidity alert", c.bad_humidity_msg)
          
    
    # use cronjob to decide wether to send the notification instead using hard-coded variable

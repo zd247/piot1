@@ -9,7 +9,8 @@ class ElectronicDie():
       self.sense = SenseHat()
 
 
-   def shake():
+   def shake(self):
+      global n
       acceleration = self.sense.get_accelerometer_raw()
       x = acceleration['x']
       y = acceleration['y']
@@ -26,25 +27,24 @@ class ElectronicDie():
       z1 = abs(abs(vz)-abs(z))
 
       if x1 > 0.5 or y1 > 0.5 or z1 > 0.5:
-         global n
          n = random.randint(1,6)
          if n == 1:
-            sense.set_pixels(c.one)
-            return n
+            self.sense.set_pixels(c.one)
          if n == 2:
-            sense.set_pixels(c.two)
-            return n
+            self.sense.set_pixels(c.two)
          if n == 3:
-            sense.set_pixels(c.three)
-            return n
+            self.sense.set_pixels(c.three)
          if n == 4:
-            sense.set_pixels(c.four)
-            return n
+            self.sense.set_pixels(c.four)
          if n == 5:
-            sense.set_pixels(c.five)
-            return n
+            self.sense.set_pixels(c.five)
          if n == 6:
-            sense.set_pixels(c.six)
-            return n
-      
-      return 0
+            self.sense.set_pixels(c.six)
+      else:
+        n = 0
+      return n
+
+   def execute(self):
+      while True:
+         self.shake()
+        

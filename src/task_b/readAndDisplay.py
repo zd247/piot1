@@ -45,9 +45,9 @@ class ReadAndDisplay():
       temp = int(round(data[2]))
       
       # set color
-      r,g,b = c.green
-      if (temp > c.max): r,g,b = c.red
-      elif (temp < c.min): r,g,b = c.blue
+      r,g,b = c.g
+      if (temp > c.max): r,g,b = c.r
+      elif (temp < c.min): r,g,b = c.b
 
       #display
       self.showNumber(temp, r,g,b)

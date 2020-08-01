@@ -61,7 +61,7 @@ class CreateReport():
    def readAndSaveData(self):
       temp, humidity = self.mntf.readDataFromSense()
 
-      currentDate = datetime.now().strftime("%d/%m/%Y")
+      currentDate = datetime.now().strftime("%m/%d/%Y")
       lastSavedDate = self.readLastDataFromCSV(c.csv_file_name).get('date')
       if (lastSavedDate is None): self.saveData(currentDate, temp, humidity)
       else: 

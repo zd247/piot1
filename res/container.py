@@ -6,112 +6,115 @@ class Container():
    config_min_max_data = json.load(open('./res/config_min_max.json'))
 
    r = (255,0,0)
-   g = (0,255,0)
-   b = (0,0,255)
+   G = (0,255,0)
+   B = (0,0,255)
+   g = (255,0,0)
+   b = (0,0,0)
    w = (150,150,150)
    y = (255,255,0)
 
    # emojis
    emoji1  = [
    w,w,w,w,w,w,w,w,
-   w,w,r,w,w,g,w,w,
-   w,w,r,w,w,g,w,w,
-   w,w,r,w,w,g,w,w,
+   w,w,r,w,w,G,w,w,
+   w,w,r,w,w,G,w,w,
+   w,w,r,w,w,G,w,w,
    w,w,w,w,w,w,w,w,
-   w,w,b,w,w,b,w,w,
-   w,w,w,b,b,w,w,w,
+   w,w,B,w,w,B,w,w,
+   w,w,w,B,B,w,w,w,
    w,w,w,w,w,w,w,w,
    ]
 
    emoji2  = [
    w,w,w,w,w,w,w,w,
-   w,y,y,w,w,g,g,w,
-   w,y,y,w,w,g,g,w,
+   w,y,y,w,w,G,G,w,
+   w,y,y,w,w,G,G,w,
    w,w,w,w,w,w,w,w,
-   w,w,w,b,b,w,w,w,
+   w,w,w,B,B,w,w,w,
    w,w,w,w,w,w,w,w,
    w,w,w,r,r,w,w,w,
    w,w,r,r,r,r,w,w,
    ]
 
    emoji3 =[
-   b,b,b,g,g,b,b,b,
-   b,b,r,r,y,y,b,b,
-   b,r,r,r,y,y,y,b,
-   b,r,r,r,y,y,y,b,
-   b,r,r,r,y,y,y,b,
-   b,b,r,r,y,y,b,b,
-   b,b,r,r,y,y,b,b,
-   b,b,b,r,y,b,b,b,
+   B,B,B,g,g,B,B,B,
+   B,B,r,r,y,y,B,B,
+   B,r,r,r,y,y,y,B,
+   B,r,r,r,y,y,y,B,
+   B,r,r,r,y,y,y,B,
+   B,B,r,r,y,y,B,B,
+   B,B,r,r,y,y,B,B,
+   B,B,B,r,y,B,B,B,
    ]
 
 
    dbname = "sense.db"
    table_name = "sense_table"
    
-      one = [
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,r,r,b,b,b,
-            b,b,b,r,r,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,]
-      two = [
-            b,b,b,b,b,b,b,b,
-            b,g,g,b,b,b,b,b,
-            b,g,g,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,g,g,b,b,
-            b,b,b,b,g,g,b,b,
-            b,b,b,b,b,b,b,b,
-            ]
-
-      three = [
-            g,g,b,b,b,b,b,b,
-            g,g,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,g,g,b,b,b,
-            b,b,b,g,g,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,g,g,
-            b,b,b,b,b,b,g,g,
-            ]
-
-      four = [
-            b,b,b,b,b,b,b,b,
-            b,g,g,b,b,g,g,b,
-            b,g,g,b,b,g,g,b,
-            b,b,b,b,b,b,b,b,
-            b,b,b,b,b,b,b,b,
-            b,g,g,b,b,g,g,b,
-            b,g,g,b,b,g,g,b,
-            b,b,b,b,b,b,b,b,
-            ]
-
-      five = [
-            g,g,b,b,b,b,g,g,
-            g,g,b,b,b,b,g,g,
-            b,b,b,b,b,b,b,b,
-            b,b,b,g,g,b,b,b,
-            b,b,b,g,g,b,b,b,
-            b,b,b,b,b,b,b,b,
-            g,g,b,b,b,b,g,g,
-            g,g,b,b,b,b,g,g,
-            ]
-
-      six = [
-            r,r,b,b,b,b,r,r,
-            r,r,b,b,b,b,r,r,
-            b,b,b,b,b,b,b,b,
-            r,r,b,b,b,b,r,r,
-            r,r,b,b,b,b,r,r,
-            b,b,b,b,b,b,b,b,
-            r,r,b,b,b,b,r,r,
-            r,r,b,b,b,b,r,r,
-            ]
+   one = [
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,r,r,b,b,b,
+        b,b,b,r,r,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,]
+   
+   two = [
+        b,b,b,b,b,b,b,b,
+        b,g,g,b,b,b,b,b,
+        b,g,g,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,g,g,b,b,
+        b,b,b,b,g,g,b,b,
+        b,b,b,b,b,b,b,b,
+        ]
+   
+   three = [
+        g,g,b,b,b,b,b,b,
+        g,g,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,g,g,b,b,b,
+        b,b,b,g,g,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,g,g,
+        b,b,b,b,b,b,g,g,
+        ]
+   
+   four = [
+        b,b,b,b,b,b,b,b,
+        b,g,g,b,b,g,g,b,
+        b,g,g,b,b,g,g,b,
+        b,b,b,b,b,b,b,b,
+        b,b,b,b,b,b,b,b,
+        b,g,g,b,b,g,g,b,
+        b,g,g,b,b,g,g,b,
+        b,b,b,b,b,b,b,b,
+        ]
+   
+   five = [
+        g,g,b,b,b,b,g,g,
+        g,g,b,b,b,b,g,g,
+        b,b,b,b,b,b,b,b,
+        b,b,b,g,g,b,b,b,
+        b,b,b,g,g,b,b,b,
+        b,b,b,b,b,b,b,b,
+        g,g,b,b,b,b,g,g,
+        g,g,b,b,b,b,g,g,
+        ]
+   
+   six = [
+        r,r,b,b,b,b,r,r,
+        r,r,b,b,b,b,r,r,
+        b,b,b,b,b,b,b,b,
+        r,r,b,b,b,b,r,r,
+        r,r,b,b,b,b,r,r,
+        b,b,b,b,b,b,b,b,
+        r,r,b,b,b,b,r,r,
+        r,r,b,b,b,b,r,r,
+        ]
 
    sleep_time = 3
    update_interval = 60
@@ -133,6 +136,10 @@ class Container():
    csv_file_name = 'report.csv'
 
    degree_sign = u"\N{DEGREE SIGN}"
+
+   bad_temp_msg = "Comfortable temparature is out of range - sending from Raspberry Pi"
+   
+   bad_humidity_msg = "Comfortable humidity is out of range - sending from Raspberry Pi"
 
    offset_left = 1
    offset_top = 2

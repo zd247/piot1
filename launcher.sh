@@ -5,7 +5,6 @@
 cd /
 cd home/pi/iot/piot1
 
-rm -R API_test.log
 rm -R cronlog
 sudo python auto.py
 

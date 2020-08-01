@@ -1,8 +1,6 @@
 from src.task_a.animatedEmoji import AnimatedEmoji
-from src.task_b.monitorAndNotify import MonitorAndNotify
 from src.task_b.readAndDisplay import ReadAndDisplay
 from src.task_b.createReport import CreateReport
-from src.task_c.bluetooth import Bluetooth
 from src.task_d.electronicDie import ElectronicDie
 from src.task_d.game import Game
 from res.container import Container as c
@@ -14,15 +12,13 @@ class Main:
       if (task is 'a'):
          AnimatedEmoji().execute()
       elif (task is 'b'):
-         task_b = input ('Please enter a number to run sub task b (3,4,5): ')
+         task_b = input ('Please enter a number to run sub task b (3,4): ')
          if (task_b == '3'):
             ReadAndDisplay().execute()
          elif (task_b == '4'):
             CreateReport().execute()
          else:
             print ("Wrong input format, please run the program again and input correctly")
-      elif (task is 'c'):
-         Bluetooth().execute()
       elif (task is 'd'):
          task_d = input ('Please enter a number to run sub task b (1,2): ')
          if (task_d is '1'):

@@ -16,10 +16,7 @@ class Helper():
 
 
    def verify_send_time(self):
-      res = requests.get('https://api.pushbullet.com/v2/pushes',
-                       headers={'Authorization': 'Bearer ' + c.access_token} )
-      pushes = json.loads(res.text).get('pushes')
-      lastestPush = list(pushes)[0]
+      lastestPush = self.get_lastest_push()
       # print(json.dumps(lastPush, indent = 4)) # formatter to view
       lastestPushTime = lastestPush.get('created')
       # print (lastestPushTime, time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(lastestPushTime))) # see lastest push time
@@ -29,6 +26,12 @@ class Helper():
          return True
       
       return False
+
+   def get_lastest_push (self):
+      res = requests.get('https://api.pushbullet.com/v2/pushes',
+                       headers={'Authorization': 'Bearer ' + c.access_token} )
+      pushes = json.loads(res.text).get('pushes')
+      return list(pushes)[0]
 
    # # Use moving average to smooth readings.
    # def get_smooth(x):

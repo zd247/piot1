@@ -1,5 +1,6 @@
 from src.task_b.monitorAndNotify import MonitorAndNotify
 from src.task_b.api.apiTest import ApiTest
+from src.task_c.bluetooth import Bluetooth
 from res.container import Container as c
 import sqlite3
 
@@ -20,6 +21,7 @@ class Auto:
 
       ApiTest().execute()
       # MonitorAndNotify().execute()
+      # Bluetooth().execute()
      
 
 

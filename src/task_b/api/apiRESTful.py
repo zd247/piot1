@@ -16,7 +16,6 @@ class ApiRESTful ():
       
       return json.dumps(data)
          
-      
    
    def getLastData(self):
       conn = sqlite3.connect(c.dbname)
