@@ -49,6 +49,7 @@ class ReadAndDisplay():
       if (temp > c.max): r,g,b = c.r
       elif (temp < c.min): r,g,b = c.b
 
+      if (temp > 99): temp = 99
       #display
       self.showNumber(temp, r,g,b)
    

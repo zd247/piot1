@@ -14,7 +14,7 @@ class Bluetooth():
       self.mntf = mntf()
 
    def lookUpNearbyBluetoothDevices(self):
-      target_name = input("enter your device name ")
+      target_name = "Xperia"
       nearby_devices = bluetooth.discover_devices()
       for bdaddr in nearby_devices:
          if target_name == bluetooth.lookup_name( bdaddr ):
@@ -43,7 +43,7 @@ class Bluetooth():
       server_sock.close()
   
    def sendMessageTo(self, message):
-      port = 8
+      port = 7
       sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
       if self.target_address is not None:
          sock.connect((self.target_address, port))
@@ -61,9 +61,9 @@ class Bluetooth():
 
          self.lookUpNearbyBluetoothDevices()
 
-         if (temp > float(c.min_temp) and temp_calibrated < float(c.max_temp)):
-            message = "Temparture is " + str(temp_calibrated)
+         if (temp > float(c.min_temp) and temp < float(c.max_temp)):
+            message = "Temparture is " + str(temp)
             self.sendMessageTo(message)
          if (humidity > float(c.min_humidity) and humidity < float (c.max_humidity)):
-            message = "Humidity is " + str(temp_calibrated)
+            message = "Humidity is " + str(humidity)
             self.sendMessageTo(message)
