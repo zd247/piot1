@@ -1,6 +1,0 @@
-getAllData passed !
-getLastData passed !
-getLastData passed !
-postData passed !
-updateLastData passed !
-Number of test passes 4/4
